@@ -4,8 +4,13 @@
 current_score = 0
 # For symptoms, in each include 1 specific unique symptom to each if possible,
 # if not, 1 specific system unique to few to allow for easier determination
+# Create list of symptoms
+sl = ["Coughing", "Fever", "Nausea"]
 common_illnesses = ("Common Cold", "Influenza", "Stomach Flu", "Coronavirus", "Pnuemonia")
-common_illnesses_symptoms = ["Coughing", "Sweating", ""]
+
+# Create a list of the common viral illnesses and tie in symptoms with each
+list_ = {"COVID": [sl[2], sl[1]]}
+print(list_["COVID"])
 
 # Import our algo AI algorithm
 with open("algo_AI.txt", "a+") as algo_ai:
