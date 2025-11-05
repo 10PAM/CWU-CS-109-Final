@@ -10,7 +10,7 @@ import random
 # For symptoms, in each include 1 specific unique symptom to each if possible,
 # if not, 1 specific system unique to few to allow for easier determination
 # Create list of symptoms
-sl = ["Fever", "Chills", "Cough", "Shortness of Breath", "Sore Throat", "Nasal Congestion", "Runny Norse", "Loss of Taste", "Loss of Smell", "Fatigue", "Body Aches", "Headache", "Nausea", "Vomiting", "Diarrhea", "Runny Nose", "Feverish", "Fatigue", "Dehydration", "Decreased Urination", "Dry Mouth", "Dry Throat", "Dizzy", "Stomach Pain", "Chest Pain", "Confusion"]
+sl = ["Fever", "Chills", "Cough", "Shortness of Breath", "Sore Throat", "Nasal Congestion", "Runny Nose", "Loss of Taste", "Loss of Smell", "Fatigue", "Body Aches", "Headache", "Nausea", "Vomiting", "Diarrhea", "Runny Nose", "Feverish", "Fatigue", "Dehydration", "Decreased Urination", "Dry Mouth", "Dry Throat", "Dizzy", "Stomach Pain", "Chest Pain", "Confusion"]
 common_illnesses = ("Common Cold", "Influenza", "Stomach Flu", "Coronavirus", "Pnuemonia")
 
 # Create a list of the common viral illnesses and tie in symptoms with each
@@ -75,7 +75,7 @@ def screenUser(user_first="", user_age=0):
     print("Influenza Potential:", potential_for_influenza)
     print("Pneumonia Potential:", potential_for_pneumonia)
 
-# screenUser()
+screenUser()
 
 def generateUser():
     
@@ -109,7 +109,7 @@ def generateUser():
     
     return generated_user_data
 
-print(generateUser())
+#print(generateUser())
 
     # generate illness with unique symptoms to a file and generate a random name
 
