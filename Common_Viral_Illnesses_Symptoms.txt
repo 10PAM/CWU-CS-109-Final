@@ -1,0 +1,21 @@
+
+COVID-19 (Per the CDC: https://www.cdc.gov/covid/signs-symptoms/index.html): 
+Fever, Chills, Cough, Shortness of Breath, Sore Throat, Congestion, Runny Nose, Loss of Taste, Loss of Smell, Fatigue, Muscle Aches, Headache, Nausea, Vomuting, Diarrhea
+
+Common Cold (Per CDC: https://www.cdc.gov/common-cold/about/index.html):
+Runny Nose, Nasal Congestion, Cough, Sore Throat, Headache, Body Aches, Fever
+
+Influenza (Per the CDC: https://www.cdc.gov/flu/signs-symptoms/index.html):
+Fever, Feverish, Sore Throat, Runny Nose, Nasal Congestion, Headaches, Fatigue, Vomiting, Diarrhea
+
+Stomach Flu/Norovirus (Per CDC: https://www.cdc.gov/norovirus/about/index.html):
+Dehydration, Decreased Urination, Dry Mouth, Dry Throat, Dizzy, Diarrhea, Vomiting, Nausea, Stomach Pain, Fever, Headache, Body Aches
+
+Pneumonia (Per CDC: https://www.cdc.gov/pneumonia/about/index.html):
+Chest Pain when Breathing, Chest Pain When Coughing, Confusion, Cough, Fever, Chills, Nausea, Vomiting, Diarrhea, Shortness of Breath
+
+All Symptomps:
+"Fever", "Chills", "Cough", "Shortness of Breathe", "Sore Throat", "Nasal Congestion", "Runny Norse", "Loss of Taste", "Loss of Smell", "Fatigue", "Body Aches", "Headache", "Feverish", "Fatigue", "Vomiting", "Diarrhea", "Dehydration", "Decreased Urination", "Dry Mouth", "Dry Throat", "Dizzy" "Stomach Pain", "Chest Pain", "Confusion"
+
+
+Starts off with checking to see if a single or a couple unique symptomps of each exist, if not, start assuming other viral illness.
