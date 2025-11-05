@@ -4,6 +4,7 @@
 #import math.py
 current_score = 0
 
+
 # For symptoms, in each include 1 specific unique symptom to each if possible,
 # if not, 1 specific system unique to few to allow for easier determination
 # Create list of symptoms
@@ -19,24 +20,86 @@ pneumonia_symptoms = [sl[24], sl[25], sl[2], sl[0], sl[1], sl[12], sl[13], sl[14
 
 # Import our algo AI algorithm
 
-def checkSymptom(illness):
+# Function to check symptoms and return True or False
+def checkSymptom(symptom):
     answer = 0
-    
+    # Use try and expect to help with input error handling
+    error_message = "Please enter either 1 (for true) or 0 (for false)."
     try:
-        answer = int(input(illness + "?: "))
+        answer = int(input(symptom + "?: "))
         if answer != 0 and answer != 1:
-            print("Please enter either 1 (for true) or 0 (for false).")
-            answer = checkSymptom(illness)
+            print(error_message)
+            answer = checkSymptom(symptom)
     except:
-        print("Please enter either 1 (for true) or 0 (for false).!!!")
-        checkSymptom(illness)
+        print(error_message)
+        checkSymptom(symptom)
         
     return bool(answer)
 
+def screenUser(user_first="", user_age=0):
+    # Get user info
+    if user_first == "":
+        user_first = input("Please enter your first name: ")
+        print("Hello", user_first + ", please answer with either 1 (true) or 0 (false) to the following symptoms you may be feeling to determine potential illness(s) that you may have:")
+    else:
+        print("Screening generated user:", user_first, "for illnesses...")
+    
+    # print("Hello", user_first + ", please answer with either 1 (true) or 0 (false) to the following symptoms you may be feeling to determine potential illness(s) that you may have:")
+    potential_for_covid = 0
+    potential_for_common_cold = 0
+    potential_for_stomach_flu = 0
+    potential_for_influenza = 0
+    potential_for_pneumonia = 0
+    
+    def checkPotentiallity(symptom, illness):
+        potentiallity = 0
+        if symptom in illness:
+            potentiallity = 1
+        return potentiallity
+    
+    # ToDO: Implement machine learning recognizition algorithms to predict using patterns in user input
+    
+    for symptom in sl:
+        if checkSymptom(symptom):
+            potential_for_covid += checkPotentiallity(symptom, covid_symptoms)
+            potential_for_common_cold += checkPotentiallity(symptom, common_cold_symptoms)
+            potential_for_stomach_flu += checkPotentiallity(symptom, stomach_flu_symptoms)
+            potential_for_pneumonia += checkPotentiallity(symptom, pneumonia_symptoms)
+            potential_for_influenza += checkPotentiallity(symptom, influenza_symptomps)
+    
+    print("Covid Potential:", potential_for_covid)
+    print("Common Cold Potential:", potential_for_common_cold)
+    print("Stomach Flu Potential:", potential_for_stomach_flu)
+    print("Influenza Potential:", potential_for_influenza)
+    print("Pneumonia Potential:", potential_for_pneumonia)
+    
+screenUser()
+
+
+def generateUser():
+    generated_user_names = ("John", "Arial", "Marques", "Abel")
+    
+    # generate illness with unique symptoms to a file and generate a random name
+
+# For a presentation, generate 5 seperate data files for a person and include the symptoms they all have relating to a specific illness
+# e.g. Mario: Fever, Chills, etc... but it includes one or more few unique symptoms to determine single illness
+
+'''
+Old function used to check symptoms on a single illness (Depracated Function On: 11/5/2025 - Mario A.):
 def checkSymptoms(illness):
+    # Prompt user for 1 to 0 input
     print("Please answer either 1 (for true) or 0 (for false) if you feel you have either of these symptomps:")
+    
+    # Initialize values
+    potentiallity = 0
+    
+    # Screen symptoms and increase counter if found
     for symptom in illness:
         has_symptom = checkSymptom(symptom)
+        potentiallity += int(has_symptom)
         print("User has " + symptom + "?: " + str(has_symptom))
+    
+    return potentiallity
         
 checkSymptoms(covid_symptoms)
+'''
