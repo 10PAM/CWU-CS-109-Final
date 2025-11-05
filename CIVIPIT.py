@@ -39,6 +39,7 @@ def checkSymptom(symptom):
         
     return bool(answer)
 
+# Function to screen the user (either real or generated)
 def screenUser(user_first="", user_age=0):
     # Get user info
     user_is_generated = True
@@ -92,7 +93,7 @@ def screenUser(user_first="", user_age=0):
     
     # ToDO: Implement machine learning recognizition algorithms to predict using patterns in user input
     for symptom in sl:
-        if (not user_is_generated and checkSymptom(symptom) or (symptom in user_generated_symptoms)):
+        if (not user_is_generated and checkSymptom(symptom)) or (symptom in user_generated_symptoms):
             potential_for_covid += checkPotentiallity(symptom, covid_symptoms)
             potential_for_common_cold += checkPotentiallity(symptom, common_cold_symptoms)
             potential_for_stomach_flu += checkPotentiallity(symptom, stomach_flu_symptoms)
@@ -105,9 +106,10 @@ def screenUser(user_first="", user_age=0):
     print("Influenza Potential:", potential_for_influenza)
     print("Pneumonia Potential:", potential_for_pneumonia)
 
-# Generate a user for samples
+# Generate user function for creating and testing samples
 def generateUser():
     
+    # Gather a list of symptoms from the chosen generated illness
     def addSymptomsToGeneratedData(illness):
         
         generated_user_data = ""
@@ -140,7 +142,8 @@ def generateUser():
     
     return generated_user_data
 
-def generateUsers(amount_to_generate=0):
+# Generate user(s) and write to a text file to save the samples
+def generateUsers(amount_to_generate=1):
     with open("Generated_Samples.txt", "w+") as generated_sample_file:
         for index in range(0, amount_to_generate):
             generated_sample_file.write(generateUser() + "\n")
