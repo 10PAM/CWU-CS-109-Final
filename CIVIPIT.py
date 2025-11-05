@@ -4,6 +4,9 @@
 #import math.py
 import random
 
+# import numpy?
+# import pillow/PIL?
+
 # For symptoms, in each include 1 specific unique symptom to each if possible,
 # if not, 1 specific system unique to few to allow for easier determination
 # Create list of symptoms
@@ -42,7 +45,7 @@ def screenUser(user_first="", user_age=0):
         print("Hello", user_first + ", please answer with either 1 (true) or 0 (false) to the following symptoms you may be feeling to determine potential illness(s) that you may have:")
     else:
         print("Screening generated user:", user_first, "for illnesses...")
-    
+        
     # print("Hello", user_first + ", please answer with either 1 (true) or 0 (false) to the following symptoms you may be feeling to determine potential illness(s) that you may have:")
     potential_for_covid = 0
     potential_for_common_cold = 0
@@ -65,30 +68,44 @@ def screenUser(user_first="", user_age=0):
             potential_for_stomach_flu += checkPotentiallity(symptom, stomach_flu_symptoms)
             potential_for_pneumonia += checkPotentiallity(symptom, pneumonia_symptoms)
             potential_for_influenza += checkPotentiallity(symptom, influenza_symptomps)
-    
+            
     print("Covid Potential:", potential_for_covid)
     print("Common Cold Potential:", potential_for_common_cold)
     print("Stomach Flu Potential:", potential_for_stomach_flu)
     print("Influenza Potential:", potential_for_influenza)
     print("Pneumonia Potential:", potential_for_pneumonia)
 
-screenUser()
+# screenUser()
 
 def generateUser():
     generated_user_name = random.choice(("John", "Arial", "Marques", "Abel"))
     illness_selected = random.choice(["Covid", "Stomach Flu", "Influenza", "Pneumonia", "Common Cold"])
-    if illness_selected == "Covid":
-        print("Covid")
-    elif illness_selected == "Stomach Flu":
-        print("Stomach Flu")
-    elif illness_selected == "Influenza":
-        print("Influenza")
-    elif illness_selected == "Pneumonia":
-        print("Pneumonia")
-    elif illness_selected == "Common Cold":
-        print("Common Cold")
+    generated_user_data = generated_user_name + ": "
     
-    return generated_user_name
+    def addSymptomsToGeneratedData(illness):
+        
+        
+        generated_user_data = ""
+        symptoms_total = random.randint(0, int(len(illness)/2))
+        list_shuffled = random.shuffle(illness)
+        
+        for symptom in range(0, symptoms_total):
+            generated_user_data += "," + list_shuffled[symptom]
+            
+        return generated_user_data
+    
+    if illness_selected == "Covid":
+        generated_user_data += addSymptomsToGeneratedData(covid_symptoms)
+    elif illness_selected == "Stomach Flu":
+        generated_user_data += addSymptomsToGeneratedData(stomach_flu_symptoms)
+    elif illness_selected == "Influenza":
+        generated_user_data += addSymptomsToGeneratedData(influenza_symptomps)
+    elif illness_selected == "Pneumonia":
+        generated_user_data += addSymptomsToGeneratedData(pneumonia_symptoms)
+    elif illness_selected == "Common Cold":
+        generated_user_data += addSymptomsToGeneratedData(common_cold_symptoms)
+    
+    return generated_user_data
 
 print(generateUser())
 
