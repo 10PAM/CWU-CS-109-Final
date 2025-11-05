@@ -2,8 +2,7 @@
 
 # Pre-define algorithmic variables
 #import math.py
-current_score = 0
-
+import random
 
 # For symptoms, in each include 1 specific unique symptom to each if possible,
 # if not, 1 specific system unique to few to allow for easier determination
@@ -72,13 +71,27 @@ def screenUser(user_first="", user_age=0):
     print("Stomach Flu Potential:", potential_for_stomach_flu)
     print("Influenza Potential:", potential_for_influenza)
     print("Pneumonia Potential:", potential_for_pneumonia)
-    
+
 screenUser()
 
-
 def generateUser():
-    generated_user_names = ("John", "Arial", "Marques", "Abel")
+    generated_user_name = random.choice(("John", "Arial", "Marques", "Abel"))
+    illness_selected = random.choice(["Covid", "Stomach Flu", "Influenza", "Pneumonia", "Common Cold"])
+    if illness_selected == "Covid":
+        print("Covid")
+    elif illness_selected == "Stomach Flu":
+        print("Stomach Flu")
+    elif illness_selected == "Influenza":
+        print("Influenza")
+    elif illness_selected == "Pneumonia":
+        print("Pneumonia")
+    elif illness_selected == "Common Cold":
+        print("Common Cold")
     
+    return generated_user_name
+
+print(generateUser())
+
     # generate illness with unique symptoms to a file and generate a random name
 
 # For a presentation, generate 5 seperate data files for a person and include the symptoms they all have relating to a specific illness
