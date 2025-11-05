@@ -78,21 +78,23 @@ def screenUser(user_first="", user_age=0):
 # screenUser()
 
 def generateUser():
-    generated_user_name = random.choice(("John", "Arial", "Marques", "Abel"))
-    illness_selected = random.choice(["Covid", "Stomach Flu", "Influenza", "Pneumonia", "Common Cold"])
-    generated_user_data = generated_user_name + ": "
     
     def addSymptomsToGeneratedData(illness):
         
-        
         generated_user_data = ""
-        symptoms_total = random.randint(0, int(len(illness)/2))
-        list_shuffled = random.shuffle(illness)
+        symptoms_total = random.randint(5, int(len(illness)))
+        #list_shuffled = random.shuffle(illness)
         
-        for symptom in range(0, symptoms_total):
-            generated_user_data += "," + list_shuffled[symptom]
+        for symptom in range(0, symptoms_total - 1):
+            generated_user_data += illness[symptom] + ", "
+            
+        generated_user_data += illness[-1]
             
         return generated_user_data
+    
+    generated_user_name = random.choice(("John", "Arial", "Marques", "Abel"))
+    illness_selected = random.choice(["Covid", "Stomach Flu", "Influenza", "Pneumonia", "Common Cold"])
+    generated_user_data = generated_user_name + ": "
     
     if illness_selected == "Covid":
         generated_user_data += addSymptomsToGeneratedData(covid_symptoms)
