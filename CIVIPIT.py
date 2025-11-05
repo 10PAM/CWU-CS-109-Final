@@ -1,4 +1,4 @@
-# Author(s): Mario Aguilera; 
+# Author(s): Mario Aguilera; Jakob Greene; Jacky Njoroge;
 
 # Pre-define algorithmic variables
 current_score = 0
