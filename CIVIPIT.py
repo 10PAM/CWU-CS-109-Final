@@ -1,8 +1,11 @@
 # Author(s): Mario Aguilera; Jakob Greene; Jacky Njoroge;
 
-# Pre-define algorithmic variables
-#import math.py
+# Determine if program is in testing mode
+testing = True
+
+#import libraries for algorithm needs and data visualization
 import random
+import matplotlib.pyplot as pypl
 
 # import numpy?
 # import pillow/PIL?
@@ -24,12 +27,12 @@ ToDo:
 # For symptoms, in each include 1 specific unique symptom to each if possible,
 # if not, 1 specific system unique to few to allow for easier determination
 # Create list of symptoms
-sl = ["Feverish", "Chills", "Cough", "Shortness of Breath", "Sore Throat", "Nasal Congestion", "Runny Nose", "Loss of Taste", "Loss of Smell", "Fatigue", "Body Aches", "Headache", "Nausea", "Vomiting", "Diarrhea", "Dehydration", "Decreased Urination", "Dry Mouth", "Dry Throat", "Dizzy", "Stomach Pain", "Chest Pain", "Confusion"]
-common_illnesses = ("Common Cold", "Influenza", "Stomach Flu", "Coronavirus", "Pnuemonia")
+sl = ["Feverish", "Chills", "Cough", "Shortness of Breath", "Sore Throat", "Nasal Congestion", "Runny Nose", "Loss of Taste", "Loss of Smell", "Fatigue", "Body Aches", "Headache", "Nausea", "Vomiting", "Diarrhea", "Dehydration", "Decreased Urination", "Dry Mouth", "Dry Throat", "Dizzy", "Stomach Pain", "Chest Pain", "Confusion", "Sneezing"]
+common_illnesses = ("Covid", "Common Cold", "Influenza", "Stomach Flu", "Pnuemonia")
 
 # Create a list of the common viral illnesses and tie in symptoms with each
 covid_symptoms = [sl[0], sl[1], sl[2], sl[3], sl[4], sl[5], sl[6], sl[7], sl[8], sl[9], sl[10], sl[11], sl[12], sl[13], sl[14]]
-common_cold_symptoms = [sl[0], sl[2], sl[4], sl[5], sl[6], sl[10], sl[11]] 
+common_cold_symptoms = [sl[0], sl[2], sl[4], sl[5], sl[6], sl[10], sl[11], sl[23]] 
 influenza_symptomps = [sl[0], sl[4], sl[5], sl[6], sl[9], sl[11], sl[13], sl[14]]
 stomach_flu_symptoms = [sl[0], sl[10], sl[11], sl[12], sl[13], sl[14], sl[15], sl[16], sl[17], sl[18], sl[19], sl[20]]
 pneumonia_symptoms = [sl[0], sl[1], sl[2], sl[3], sl[12], sl[13], sl[14], sl[21], sl[22]]
@@ -74,11 +77,11 @@ def screenUser(user_first="", user_age=0):
     user_generated_symptoms = []
     
     # Pre-intitalize potential for illnesses variables
-    potential_for_covid = 0
-    potential_for_common_cold = 0
-    potential_for_stomach_flu = 0
-    potential_for_influenza = 0
-    potential_for_pneumonia = 0
+    potential_for_covid = 0.0
+    potential_for_common_cold = 0.0
+    potential_for_stomach_flu = 0.0
+    potential_for_influenza = 0.0
+    potential_for_pneumonia = 0.0
     
     if user_first == "":
         user_is_generated = False
@@ -87,11 +90,13 @@ def screenUser(user_first="", user_age=0):
     else:
         # Split the user generated data by splitting into list by delimeter and then removing first element (name, not a symptom)
         user_generated_symptoms += user_first.split(',')
-        user_name = user_generated_symptoms.pop(0)
-        print("Screening generated user:", user_name, "for illnesses. Their symptoms are:", user_generated_symptoms)
+        user_first = user_generated_symptoms.pop(0)
+        print("Screening generated user:", user_first, "for illnesses. Their symptoms are:", user_generated_symptoms)
     
     def checkPotentiallity(symptom, illness):
         potentiallity = 0
+        
+        # Issue: Covid being ahead a lot of the times. Potentially caused by having a lot of similar symptoms as other
 
         # Determine if symtpom being checked is unqiue to all illnesses, if so, add to unique symptom for more points
         unique_symptom = 0
@@ -105,13 +110,16 @@ def screenUser(user_first="", user_age=0):
             unique_symptom += 1
         if symptom in influenza_symptomps:
             unique_symptom += 1
+            
+        # If symptom is unique, subtract 0.5 from others
         
         # If symptom is unique, add more points
         if symptom in illness:
             if unique_symptom == 1:
-                potentiallity = 3
-            elif unique_symptom == 2:
-                potentiallity = 2
+                # Add points to get increase by the amount of common_illnesses minus the illness
+                potentiallity = len(common_illnesses) - 1
+            #elif unique_symptom == 2:
+                #potentiallity = 2
             else:
                 potentiallity = 1
         
@@ -128,13 +136,20 @@ def screenUser(user_first="", user_age=0):
             potential_for_pneumonia += checkPotentiallity(symptom, pneumonia_symptoms)
             potential_for_influenza += checkPotentiallity(symptom, influenza_symptomps)
             
-    # Output all potentiallity scores of having a certain illness
+    # Create empty line, then output all potentiallity scores of having a certain illness
+    print()
     print("Covid Potential:", potential_for_covid)
     print("Common Cold Potential:", potential_for_common_cold)
     print("Stomach Flu Potential:", potential_for_stomach_flu)
     print("Influenza Potential:", potential_for_influenza)
     print("Pneumonia Potential:", potential_for_pneumonia)
     
+    colors = ["red", "green", "blue", "purple", "orange"]
+    pypl.bar(["Covid", "Common Cold", "Stomach Flu", "Influenza", "Pneumonia"], [potential_for_covid, potential_for_common_cold, potential_for_stomach_flu, potential_for_influenza, potential_for_pneumonia], color=colors)
+    pypl.xlabel("Illness")
+    pypl.ylabel("Potentiallity")
+    pypl.title("Potentiallity of Illness(es) for " + user_first)
+    pypl.show()
     # To print white line for spacing/formatting
     print()
 
@@ -178,12 +193,14 @@ def generateUser():
 # Load generated data and test each
 
 # Generate user(s) and write to a text file to save the samples
-def generateUsers(amount_to_generate=1):
+def generateUsers(directory, amount_to_generate=1):
     with open("Generated/Generated_Samples.txt", "w+") as generated_sample_file:
         for index in range(0, amount_to_generate):
             generated_sample_file.write(generateUser() + "\n")
     # To print a white line for spacing
     print()
+    
+    return directory
 
 # Screen users that are contained in a dataset file
 def screenUsers(dataset):
@@ -196,9 +213,11 @@ def screenUsers(dataset):
 
 
 # Generate (n) users
-generateUsers(8)
-
-screenUsers("Generated/Generated_Samples.txt")
+if testing:
+    # generateUsers("Generated/Generated_Samples.txt", 8)
+    screenUsers(generateUsers("Generated/Generated_Samples.txt", 8))
+else:
+    screenUser()
 
 #screenUser(generateUser())
 
