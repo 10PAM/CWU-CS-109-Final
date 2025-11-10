@@ -1,0 +1,9 @@
+1. Save result in table then compare the current temporary table with the saved table and overwrite the old table if new dataset leads
+    to faster prediction
+    2. Example (Data_Saved.txt):
+        For data in Data_Saved:
+            Data_Line = data.split(',')
+            Data_Line = Data_Line.pop(0)
+    3. Compare values and determine if there is a pattern of more than 2 similar symptoms. If so, predict the result
+    4. Another option (For testing): If program is in testing mode, and user determines the viral illness predicted is wrong,
+    then correct the Data
