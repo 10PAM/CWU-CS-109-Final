@@ -3,7 +3,7 @@ Quantatative Reasoning using Python (CS 109) Course Final Project (CIVPIT) Repos
 
 ![CIVIPIT_Resized](https://github.com/user-attachments/assets/34388b6d-17a8-4096-8d92-91ac08f70905)
 
-CIVIPIT (Commonly Identified Viral Illnesses Predicting Intelligent Tool) will be a
+CIVIPIT (Commonly Identified Viral Illnesses Predicting Intelligent Tool) is a project
 program that guesses the closest probable common viral illness (COVID-19, Norovirus (Stomach
 flu), Influenza, Common Cold, and Pneumonia) that a user may have depending on their provided
 answers to prompts. It will use machine learning algorithms created by us to predict a common
