@@ -1,7 +1,7 @@
 # CIVIPIT
 Quantatative Reasoning using Python (CS 109) Course Final Project (CIVPIT) Repository.
 
-<img width="1080" height="1080" alt="CIVIPIT" src="https://github.com/user-attachments/assets/4063a3de-5f5d-40e6-9628-968856fb6e26" />
+<img width="250" height="250" alt="CIVIPIT" src="https://github.com/user-attachments/assets/4063a3de-5f5d-40e6-9628-968856fb6e26" />
 
 
 CIVIPIT (Commonly Identified Viral Illnesses Predicting Intelligent Tool) is a project
