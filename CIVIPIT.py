@@ -1,4 +1,4 @@
-# Author(s): Mario Aguilera; Jakob Greene; Jacky Njoroge
+# Author(s): Mario Aguilera
 # Date: 11/15/2026
 # File: CIVIPIT.py
 # About: Program that screens a user for 5 of the most commo viral infections in the US (Per the CDC)
