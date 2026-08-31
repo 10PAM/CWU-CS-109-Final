@@ -1,4 +1,4 @@
-# Author(s): Mario Aguilera
+# Author(s): Mario Aguilera Piceno
 # Date: 11/15/2025
 # File: CIVIPIT.py
 # About: Program that screens a user for 5 of the most commo viral infections in the US (Per the CDC)
